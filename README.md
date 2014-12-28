@@ -6,6 +6,8 @@ The SVG library does not use an advanced library for DOM manipulation, but rathe
 
 ## Demo
 
+<img src="screenshot.png" />
+
 You can either run:
 
 a) bundle.js: Use this generate the grid from a script
