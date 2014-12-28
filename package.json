@@ -1,11 +1,10 @@
 {
-  "name": "pinboardjs2",
-  "version": "1.0.0",
-  "description": "",
+  "name": "pinboard-grid",
+  "version": "0.0.1",
+  "description": "An SVG grid renderer",
   "main": "index.js",
   "dependencies": {
     "domready": "^1.0.7",
-    "simplesvg": "^0.0.3",
     "svg-node": "^1.0.0",
     "underscore": "^1.7.0"
   },
@@ -13,6 +12,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Patrick Mulder",
+  "license": "MIT"
 }
