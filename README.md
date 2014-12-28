@@ -10,8 +10,9 @@ The SVG library does not use an advanced library for DOM manipulation, but rathe
 
 You can either run:
 
-a) bundle.js: Use this generate the grid from a script
-b) bundle-require.js: Use this to generate the grid interactively from the Node shell
+* bundle.js: Use this to generate a grid from a script
+
+* bundle-require.js: Use this to generate the grid interactively from the Node shell
 
 For this demo, load bundle-require.js and run in the browser console:
 
