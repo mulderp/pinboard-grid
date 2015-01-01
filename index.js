@@ -18,47 +18,44 @@ var Grid = function(svg, options) {
   this.spacing = options.spacing ? options.spacing : 10;
 
   // when calling render from a callback, use this context
-  _.bindAll(this, '_renderHorizontal', '_renderVertical');
+  _.bindAll(this, '_renderSquare');
 
 }
 
-// horizontal rendering uses fixed X positions 
-Grid.prototype._renderHorizontal = function(pos) {
+// render squares onto group
+Grid.prototype._renderSquare = function(group, x, y) {
 
-  var line = createNode('line');
-  line.setAttribute('x1', 0);
-  line.setAttribute('y1', this.spacing*pos);
-  line.setAttribute('x2', 1000);
-  line.setAttribute('y2', this.spacing*pos);
-  line.setAttribute('stroke', this.color);
-  line.setAttribute('stroke-width', this.weight);
+  var square = createNode('rect');
+  square.setAttribute('x', x);
+  square.setAttribute('y', y);
+  square.setAttribute('width', this.spacing);
+  square.setAttribute('height', this.spacing);
+  square.setAttribute('stroke', this.color);
+  square.setAttribute('stroke-width', this.weight);
+  square.setAttribute('fill', 'white');
 
   // for future dashing of the line
   // line.setAttribute('stroke-dasharray':'1, 3');
   // line.setAttribute('stroke-linecap':'round');
 
-  this.svg.appendChild(line);
+  group.appendChild(square);
 }
 
-
-// vertical rendering uses fixed Y positions
-Grid.prototype._renderVertical = function(pos) {
-  var line = createNode('line');
-  line.setAttribute('x1', this.spacing*pos);
-  line.setAttribute('y1', 0);
-  line.setAttribute('x2', this.spacing*pos);
-  line.setAttribute('y2', 1000);
-  line.setAttribute('stroke', this.color);
-  line.setAttribute('stroke-width', this.weight);
-
-  this.svg.appendChild(line);
-}
 
 // main render function
 Grid.prototype.render = function() {
 
-  _.times(maxY, this._renderHorizontal);
-  _.times(maxX, this._renderVertical);
+  var group = createNode('g');
+  group.setAttribute('class', 'grid');
+
+  var that = this;
+  for (var row=0; row<maxY; row++) {
+    for (var column=0; column<maxX; column++) {
+      that._renderSquare(group, row * that.spacing, column * that.spacing);
+    }
+  }
+
+  this.svg.appendChild(group);
 
 }
 
